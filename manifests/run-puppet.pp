@@ -3,7 +3,14 @@ node 'localhost' {
 
   file { '/tmp/hello_otto.txt':
     ensure  => file,
-    content => "Hello Mr. Otto -- localhost only\n",
+    content => "Hello Mr. Otto -- localhost 1 only\n",
+  }
+}
+node 'localhost2' {
+
+  file { '/tmp/hello_otto.txt':
+    ensure  => file,
+    content => "Hello Mr. Otto -- localhost 2 only\n",
   }
 }
   
