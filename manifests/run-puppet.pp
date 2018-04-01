@@ -30,6 +30,7 @@ node 'localhost2' {
          source => http://www.jr.co.il/humor/yiddish.txt,
          owner  => 'vagrant',
          group  => 'vagrant',
+    }
 }
   
 file { '/usr/local/bin/run-puppet':
