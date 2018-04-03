@@ -1,12 +1,17 @@
 # Set up regular Puppet runs
-node 'localhost' {
+node 'PuppetAgent1' {
 
   file { '/tmp/hello_otto.txt':
     ensure  => file,
     content => "Hello Mr. Otto -- localhost 1 only\n",
   }
+  exec { 'Store Date':
+    command => 'date > date.dat  ',
+    cwd     =>  /tmp ,
+
+  }
 }
-node 'localhost2' {
+node 'PuppetAgent2' {
 
   file { '/tmp/hello_otto.txt':
     ensure  => file,
