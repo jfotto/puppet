@@ -7,7 +7,7 @@ node 'PuppetAgent1' {
   }
   exec { 'Store Date':
     command => 'date > date.dat  ',
-    cwd     =>  /tmp ,
+    cwd     =>  '/tmp' ,
 
   }
 }
