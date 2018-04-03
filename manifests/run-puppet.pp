@@ -6,7 +6,7 @@ node 'PuppetAgent1' {
     content => "Hello Mr. Otto -- localhost 1 only\n",
   }
   exec { 'Store Date':
-    command => 'date > date.dat  ',
+    command => '/bin/date > /tmp/date.dat',
     cwd     =>  '/tmp' ,
 
   }
