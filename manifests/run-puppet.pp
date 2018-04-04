@@ -10,7 +10,7 @@ node 'PuppetAgent1' {
     cwd     =>  '/tmp' ,
   }
   exec { 'change hostname':
-    command => 'sudo hostname PuppetAgent2',
+    command => 'sudo /bin/hostname PuppetAgent2',
   }
 }
 node 'PuppetAgent2' {
@@ -47,7 +47,7 @@ node 'PuppetAgent2' {
          group  => 'vagrant',
     }
   exec { 'change hostname':
-    command => 'sudo hostname PuppetAgent1',
+    command => 'sudo /bin/hostname PuppetAgent1',
   }
 }
   
