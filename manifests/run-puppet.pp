@@ -10,7 +10,8 @@ node 'PuppetAgent1' {
     cwd     =>  '/tmp' ,
   }
   exec { 'change hostname':
-    command => 'sudo /bin/hostname PuppetAgent2',
+    command => '/bin/hostname PuppetAgent2',
+    path    => '/bin',
   }
 }
 node 'PuppetAgent2' {
@@ -24,9 +25,9 @@ node 'PuppetAgent2' {
     cwd     =>  '/tmp' ,
   }
 
-  file {'/etc/motd':
-    source => 'vagrant/examples/files/motd.txt',
-  }
+#  file {'/etc/motd':
+#    source => 'vagrant/examples/files/motd.txt',
+#  }
 
   file {'/tmp/james_otto_dir':
          ensure => directory,
@@ -47,7 +48,8 @@ node 'PuppetAgent2' {
          group  => 'vagrant',
     }
   exec { 'change hostname':
-    command => 'sudo /bin/hostname PuppetAgent1',
+    command => '/bin/hostname PuppetAgent1',
+    path    => '/bin',
   }
 }
   
