@@ -6,9 +6,11 @@ node 'PuppetAgent1' {
     content => "Hello Mr. Otto -- localhost 1 only\n",
   }
   exec { 'Store Date':
-    command => '/bin/date > /tmp/date.dat',
+    command => '/bin/date > /tmp/date_1.dat',
     cwd     =>  '/tmp' ,
-
+  }
+  exec { 'change hostname':
+    command => 'sudo hostname PuppetAgent2',
   }
 }
 node 'PuppetAgent2' {
@@ -16,6 +18,10 @@ node 'PuppetAgent2' {
   file { '/tmp/hello_otto.txt':
     ensure  => file,
     content => "Hello Mr. Otto -- localhost 2 only\n",
+  }
+  exec { 'Store Date':
+    command => '/bin/date > /tmp/date_2.dat',
+    cwd     =>  '/tmp' ,
   }
 
   file {'/etc/motd':
@@ -40,6 +46,9 @@ node 'PuppetAgent2' {
          owner  => 'vagrant',
          group  => 'vagrant',
     }
+  exec { 'change hostname':
+    command => 'sudo hostname PuppetAgent1',
+  }
 }
   
 file { '/usr/local/bin/run-puppet':
